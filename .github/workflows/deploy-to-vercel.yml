@@ -1,0 +1,40 @@
+name: Deploy LMS Frontend → Vercel
+
+on:
+  push:
+    branches: [main, dev]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Install Vercel CLI
+        run: npm i -g vercel@latest
+
+      - name: Pull Vercel environment info
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          NEXT_PUBLIC_BASE_URL_1: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          NEXT_PUBLIC_BASE_URL_2: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          NEXT_PUBLIC_BASE_URL_3: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          NEXT_PUBLIC_BASE_URL_4: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+
+      - name: Deploy to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
