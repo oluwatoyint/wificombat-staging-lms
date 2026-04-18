@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
   const { name, pass } = await req.json();
   try {
     const res1 = await fetch(`${SERVER_URL}/login`, {
-    // const res1 = await fetch(`https://backend.wificombatelearn.com/login`, {
+    // const res1 = await fetch(`https://wificombat-staging-backend-production.up.railway.app/login`, {
       method: "POST",
 
       body: JSON.stringify({ email: name, password: pass }),
