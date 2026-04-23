@@ -15,7 +15,7 @@ const nextConfig = {
       // Railway backend (for media served directly from the API)
       { protocol: "https", hostname: "*.railway.app" },
       // Production backend
-      { protocol: "https", hostname: "backend.wificombatelearn.com" },
+      { protocol: "https", hostname: "wificombat-staging-backend-production.up.railway.app" },
     ],
   },
 };

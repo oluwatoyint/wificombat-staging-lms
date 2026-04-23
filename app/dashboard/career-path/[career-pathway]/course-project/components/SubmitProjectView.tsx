@@ -132,7 +132,7 @@ const submitProjectForAIGrading = async () => {
   }
   try {
     setLoading(true);
-    const res = await fetch('https://backend.wificombatelearn.com/ai-agents/grade_assignment_or_projects/', {
+    const res = await fetch('https://wificombat-staging-backend-production.up.railway.app/ai-agents/grade_assignment_or_projects/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

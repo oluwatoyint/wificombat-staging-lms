@@ -1,7 +1,7 @@
 // API base URL — driven by NEXT_PUBLIC_BASE_URL set in Vercel dashboard.
 // Falls back to production URL if the variable is not set.
 export const BASE_URL =
-  process.env.NEXT_PUBLIC_BASE_URL ?? "https://backend.wificombatelearn.com";
+  process.env.NEXT_PUBLIC_BASE_URL ?? "https://wificombat-staging-backend-production.up.railway.app";
 
 export const SERVER_URL = BASE_URL;
 
